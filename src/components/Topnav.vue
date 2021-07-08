@@ -31,6 +31,8 @@ export default {
   > .logo {
     max-width: 6em;
     margin-right: auto;
+    justify-content: center;
+    align-items: center;
   }
   > .menu {
     display: flex;
@@ -39,6 +41,10 @@ export default {
     > li {
       margin: 0 1em;
     }
+  }
+  @media (max-width:500px) {
+    > .menu{display: none;}
+    > .logo{margin: 0 auto;}
   }
 }
 </style>
