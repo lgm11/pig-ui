@@ -1,5 +1,17 @@
 <template>
-    <button>
+    <button class="pig-button" :class="`pig-theme-${theme}`">
         <slot />
-    </button>
+    </button>   
 </template>
+
+<script lang="ts">
+export default {
+    props:{
+        theme:{
+            type:String,
+            default:'button'
+        }
+    }
+}
+    
+</script>
