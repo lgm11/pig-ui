@@ -1,5 +1,5 @@
 <template>
-    <button @click="toggle" :class="{checked:value}"><span></span></button>
+    <button @click="toggle" :class="{'pig-checked':value}" class="pig-switch"><span></span></button>
 </template>
 
 <script>
@@ -18,10 +18,10 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     $h: 22px;
     $h2: $h - 4px;
-  button{
+  .pig-switch{
     height: $h;
     width: $h*2;
     border: none;
@@ -39,19 +39,19 @@ export default {
     border-radius: $h2 / 2;
     transition: all 250ms;
   }
-  button.checked{
+  .pig-checked.pig-checked{
       background: #1890ff;
   }
-  button.checked > span{
+  .pig-switch.pig-checked > span{
       left: calc(100% - #{$h2} - 2px);
   }
-  button:focus{
+  .pig-switch:focus{
       outline: none;
   }
-  button:active{
+  .pig-switch:active{
     > span {width: $h2 + 4px;}
   }
-  button.checked:active{
+  .pig-switch.pig-checked:active{
     > span {width: $h2 + 4px; margin-left: -4px;}
   }
 </style>
