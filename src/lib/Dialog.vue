@@ -1,16 +1,16 @@
 <template>
     <template v-if="visible">
-        <div class="pig-dialog-overlay"></div>
+        <div class="pig-dialog-overlay" @click="OnClickOverlay"></div>
         <div class="pig-dialog-wrapper">
             <div class="pig-dialog">
-                <header>标题<span class="pig-dialog-close"></span></header>
+                <header>标题<span @click="close" class="pig-dialog-close"></span></header>
                 <main>
                     <p>第一行字</p>
                     <p>第二行字</p>
                 </main>
                 <footer>
-                    <Button level="main">OK</Button>
-                    <Button>Cancel</Button>
+                    <Button level="main" @click="ok">OK</Button>
+                    <Button @click="cancel">Cancel</Button>
                 </footer>
             </div>
         </div>
@@ -27,7 +27,37 @@ export default {
         visible:{
             type:Boolean,
             default:false
+        },
+        closeOnClickOverlay:{
+            type:Boolean,
+            default:true
+        },
+        ok:{
+            type:Function
+        },
+        cancel:{
+            type:Function
         }
+    },
+    setup(props,context){
+        const close = ()=>{
+            context.emit('update:visible',false)
+        }
+        const OnClickOverlay =()=>{
+            if(props.closeOnClickOverlay){
+                close()
+            }
+        }
+        const ok = ()=>{
+            if(props.ok && props.ok() !== false){
+                close()
+            }
+        }
+        const cancel =()=>{
+            context.emit('cancel')
+            close()
+        }
+        return {close,OnClickOverlay,ok,cancel}
     }
 }
 </script>
