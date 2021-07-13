@@ -1,18 +1,20 @@
 <template>
     <template v-if="visible">
-        <div class="pig-dialog-overlay" @click="OnClickOverlay"></div>
-        <div class="pig-dialog-wrapper">
-            <div class="pig-dialog">
-                <header>{{title}}<span @click="close" class="pig-dialog-close"></span></header>
-                <main>
-                    <slot />
-                </main>
-                <footer>
-                    <Button level="main" @click="ok">OK</Button>
-                    <Button @click="cancel">Cancel</Button>
-                </footer>
+        <Telement to="body">
+            <div class="pig-dialog-overlay" @click="OnClickOverlay"></div>
+            <div class="pig-dialog-wrapper">
+                <div class="pig-dialog">
+                    <header><slot name="title" /><span @click="close" class="pig-dialog-close"></span></header>
+                    <main>
+                        <slot name="content" />
+                    </main>
+                    <footer>
+                        <Button level="main" @click="ok">OK</Button>
+                        <Button @click="cancel">Cancel</Button>
+                    </footer>
+                </div>
             </div>
-        </div>
+        </Telement>
     </template>
 </template>
 
@@ -57,7 +59,7 @@ export default {
             }
         }
         const cancel =()=>{
-            context.emit('cancel')
+            props.cancel && props.cancel()
             close()
         }
         return {close,OnClickOverlay,ok,cancel}
