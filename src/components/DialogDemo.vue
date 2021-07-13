@@ -4,7 +4,10 @@
     </div>
     <h1>示例1</h1>
     <Button @click="toggle">toggle</Button>
-    <Dialog v-model:visible="x" :ok="f1" :cancel="f2"></Dialog>
+    <Dialog v-model:visible="x" :ok="f1" :cancel="f2">
+        <div>hi</div>
+        <div>hi2</div>
+    </Dialog>
 </template>
 
 <script lang="ts">

@@ -3,10 +3,9 @@
         <div class="pig-dialog-overlay" @click="OnClickOverlay"></div>
         <div class="pig-dialog-wrapper">
             <div class="pig-dialog">
-                <header>标题<span @click="close" class="pig-dialog-close"></span></header>
+                <header>{{title}}<span @click="close" class="pig-dialog-close"></span></header>
                 <main>
-                    <p>第一行字</p>
-                    <p>第二行字</p>
+                    <slot />
                 </main>
                 <footer>
                     <Button level="main" @click="ok">OK</Button>
@@ -37,6 +36,10 @@ export default {
         },
         cancel:{
             type:Function
+        },
+        title:{
+            type:String,
+            default:"提示"
         }
     },
     setup(props,context){
