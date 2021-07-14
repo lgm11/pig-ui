@@ -1,10 +1,10 @@
 <template>
     <div class="pig-tabs">
         <div class="pig-tabs-nav">
-            <div class="pig-tabs-nav-item" v-for="(t,index) in title " :key="index">{{t}}</div>
+            <div class="pig-tabs-nav-item" :class="{selected:t===selected}" @click="select(t)" v-for="(t,index) in title " :key="index">{{t}}</div>
         </div>
         <div class="pig-tabs-content">
-            <component class="pig-tabs-content-item" v-for="(c,index) in defaults" :is="c" :key="index" />
+            <component class="pig-tabs-content-item" :class="{selected:c.props.title===selected}" v-for="(c,index) in defaults" :is="c" :key="index" />
         </div>
     </div>
 </template>
@@ -12,6 +12,11 @@
 <script lang="ts">
 import Tab from './Tab.vue'
 export default {
+    props:{
+        selected:{
+            type:String
+        }
+    },
     setup(props,context){
         const defaults = context.slots.default()
         defaults.forEach((tag)=>{
@@ -20,7 +25,10 @@ export default {
             }
         })
         const title = defaults.map((tag)=>{return tag.props.title})
-        return {defaults,title}
+        const select = (title:string)=>{
+            context.emit('update:selected',title)
+        }
+        return {defaults,title,select}
     }
 }
 </script>
@@ -48,6 +56,12 @@ $border-color: #d9d9d9;
   }
   &-content {
     padding: 8px 0;
+    &-item {
+      display: none;
+      &.selected {
+        display: block;
+      }
+    }
   }
 }
 </style>
