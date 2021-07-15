@@ -66,8 +66,7 @@ export default {
   > .toggleAside {
     display: none;
     width: 32px;
-    height: 32px;
-    background: fade-out(black,0.9);
+    height: 32px;  
     position: absolute;
     left: 16px;
     top: 50%;
