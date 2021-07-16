@@ -4,41 +4,45 @@
         <div class="demo">
             <h2>常规用法</h2>
             <div class="demo-component">
-                <Switch1Demo />
+                <component :is="Switch1Demo" />
             </div>
             <div class="demo-actions">
                 <Button>查看代码</Button>
             </div>
             <div class="demo-code">
-                <pre>{{Switch1Demo.__sourceCode}}</pre>
+              <pre class="language-html" v-html="Prism.highlight(Switch1Demo.__sourceCode, Prism.languages.html, 'html')" />
             </div>
         </div>
         <div class="demo">
             <h2>支持 disabled </h2>
             <div class="demo-component">
-                <switch2Demo/>
+                <component :is="Switch2Demo" />
             </div>
             <div class="demo-actions">
                 <Button>查看代码</Button>
             </div>
             <div class="demo-code">
-                <pre>{{Switch2Demo.__sourceCode}}</pre>
+              <pre class="language-html" v-html="Prism.highlight(Switch2Demo.__sourceCode, Prism.languages.html, 'html')" />
             </div>
         </div>
     </div>
+    <br/><br/>
+    <p>注意：代码示例中引入Switch组件的路径需按照自身的需求更改</p>
 </template>
 
 <script lang="ts">
 import Button from '../lib/Button.vue'
 import { ref } from 'vue'
-import Switch from '../lib/Switch.vue'
 import Switch1Demo from './Switch1.demo.vue'
 import Switch2Demo from './Switch2.demo.vue'
+import 'prismjs'
+import 'prismjs/themes/prism.css'
+const Prism = (window as any).Prism
 export default {
-    components:{Switch,Button, Switch1Demo,Switch2Demo},
+    components:{Button},
     setup(){
         const bool = ref(false)
-        return {bool,Switch1Demo,Switch2Demo}
+        return {bool,Switch1Demo,Switch2Demo,Prism}
     }
 }
 </script>
