@@ -19,13 +19,13 @@ export default {
   },
   plugins: [
     scss({ include: /\.scss$/, sass: dartSass }),
+    vue({
+      include: /\.vue$/,
+    }),
     esbuild({
       include: /\.[jt]s$/,
       minify: process.env.NODE_ENV === 'production',
       target: 'es2015' 
     }),
-    vue({
-      include: /\.vue$/,
-    })
   ],
 }

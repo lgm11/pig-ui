@@ -1,6 +1,8 @@
 {
-  "name": "gulu-ui-1",
-  "version": "0.0.0",
+  "name": "pig-ui-1",
+  "version": "0.0.1",
+  "files": ["dist/lib/*"],
+  "main": "dist/lib/pig.js",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
