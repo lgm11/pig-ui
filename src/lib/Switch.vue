@@ -1,10 +1,10 @@
 <template>
-    <button @click="toggle" :class="{'pig-checked':value}" class="pig-switch"><span></span></button>
+    <button @click="toggle" :class="{'pig-checked':value}" class="pig-switch">
+        <span></span>
+    </button>
 </template>
 
 <script>
-import { ref } from 'vue'
-
 export default {
     props:{
         value:Boolean
@@ -26,7 +26,7 @@ export default {
     width: $h*2;
     border: none;
     background: #bfbfbf;
-    border-radius: $h/2;
+    border-radius: 11px;
     position: relative;
     > span{
         position: absolute;
@@ -35,7 +35,7 @@ export default {
         height: $h2;
         width: $h2;
         background:white;
-        border-radius: $h2 / 2;
+        border-radius: 11px;
         transition: all 250ms;
     }
   }
