@@ -39,11 +39,11 @@ export default {
 .topnav {
   display: flex;
   padding: 16px;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 30;
   justify-content: center;
   align-items: center;
   > .logo {
@@ -64,13 +64,13 @@ export default {
     }
   }
   > .toggleAside {
-    display: none;
     width: 32px;
     height: 32px;  
     position: absolute;
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
+    display: none;
   }
   @media (max-width:500px) {
     > .menu{display: none;}

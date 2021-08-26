@@ -6,7 +6,7 @@
         <h1>pig-UI</h1>
         <h2>一个很厉害的UI</h2>
         <p class="actions">
-          <a href="https://github.com">GitHUb</a>
+          <a href="https://lgm11.github.io/morney-react-website/index.html">GitHUb</a>
           <router-link to="/doc">开始</router-link>
         </p>
       </div>
